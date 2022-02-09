@@ -9,8 +9,6 @@ import express, { NextFunction, Request, Response } from 'express';
 import rmqp from '@util/rmq';
 import 'express-async-errors';
 
-import '@util/rpcmq';
-
 import BaseRouter from './routes/api';
 import logger from 'jet-logger';
 import { cookieProps } from '@routes/auth-router';
@@ -21,6 +19,11 @@ const app = express();
 const exchange = rmqp.createConnection('xchange1', 'queue1')
 rmqp.generateMessage('YESSS!!', exchange);
 
+
+import startserver from '@util/rpcmq';
+import startclient from '@util/client';
+startserver()
+startclient()
 /************************************************************************************
  *                              Set basic express settings
  ***********************************************************************************/
