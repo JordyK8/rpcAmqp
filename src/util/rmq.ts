@@ -2,7 +2,7 @@ import * as Amqp from "amqp-ts";
 const createConnection = (x: string, q:string): Amqp.Exchange => {
 
   const connection = new Amqp.Connection(
-    "amqps://uwvxzylj:wzSumfPnL--TuRvAH9yaoYMIHZKRP6ie@kangaroo.rmq.cloudamqp.com/uwvxzylj"
+    process.env.RMQ
   );
   
   const exchange = connection.declareExchange(x);
