@@ -1,4 +1,7 @@
 import * as Amqp from "amqp-ts";
+import dotenv from "dotenv"
+
+dotenv.config()
 const createConnection = (x: string, q:string): Amqp.Exchange => {
 
   const connection = new Amqp.Connection(

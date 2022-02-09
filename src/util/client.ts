@@ -5,7 +5,7 @@ const startclient = async () => {
   console.log('client running');
   
   const conn = await amqp.connect(
-    process.env.RMQ
+    process.env.RMQ || ''
   );
   const channel = await conn.createChannel();
   const queue = await channel.assertQueue('', { exclusive: true });

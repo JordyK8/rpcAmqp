@@ -1,11 +1,14 @@
 
 import amqp from 'amqplib';
+import dotenv from "dotenv"
+
+dotenv.config()
 const startserver = async () => {  
   console.log('server running');
   
   try {
     const conn = await amqp.connect(
-      process.env.RMQ
+      process.env.RMQ || ''
     );
     const channel =  await conn.createChannel();
     await channel.assertQueue('rpc_queue', { durable: false });
